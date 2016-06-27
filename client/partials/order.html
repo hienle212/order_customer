@@ -1,0 +1,45 @@
+<div ng-controller='OrderController'>
+	<h3>Add a new order</h3>
+	<form >
+ Customer : <select  ng-model='newOrder.name' >
+ <option ng-repeat="customer in customers" value="{{customer.name}}">{{customer.name}}</option>
+  </select>	
+		Order : <select  name='quantity' ng-model='newOrder.quantity'>
+						<option>1</option>
+						<option>2</option>
+						<option>3</option>
+						<option>4</option>
+						<option>5</option>
+						<option>6</option>
+						<option>7</option>
+						<option>8</option>
+						<option>9</option>
+						<option>10</option>
+		</select>
+		<select  ng-model='newOrder.product'>
+						<option>Nike Shoes</option>
+						<option>Black Belt</option>
+						<option>Ice Cream</option>
+						<option>Candy</option>
+		</select>
+		<button type="submit" ng-click='create()'>Order</button>
+	</form>
+
+		<input type='text'  placeholder='search orders' ng-model="filter_orders">
+	<table >
+		<thead>
+			<th>Customer Name</th>
+			<th>Product</th>
+			<th>Quantity</th>
+			<th>Date</th>
+		</thead>
+		<tbody>
+			<tr ng-repeat="order in orders | filter: filter_orders ">
+				<td > {{order.name}}</td>
+				<td >{{order.product}}</td>
+				<td >{{order.quantity}}</td>
+				<td >{{order.createdAt | date: "MM/dd/yyyy"}}</td>
+			</tr>
+		</tbody>
+	</table>		
+</div>
